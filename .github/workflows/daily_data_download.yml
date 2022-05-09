@@ -18,6 +18,10 @@ jobs:
           node-version: 16.x
       - run: npm install
       - run: npm run daily_data_download
+        env:
+          DB_COLLECTION: ${{ secrets.DB_COLLECTION }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       - run: |
           git config user.name "sergivv"
           git config user.email "${{ secrets.EMAIL }}"
