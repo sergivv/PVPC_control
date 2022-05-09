@@ -1,0 +1,26 @@
+name: Download the latest PVPC prices
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 19 * * *
+
+jobs:
+  downloadData:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+      - name: Use Node.js version 16.x
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: 16.x
+      - run: npm install
+      - run: npm run daily_data_download
+      - run: |
+          git config user.name "sergivv"
+          git config user.email "${{ secrets.EMAIL }}"
+          git add .
+          git commit -m 'Add next day PVPC prices'
+          git push

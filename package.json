@@ -1,0 +1,32 @@
+{
+  "name": "pvpc_control",
+  "version": "1.0.0",
+  "description": "Control PVPC prices",
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "daily_data_download": "node ./scripts/daily_data_download.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergivv/PVPC_control.git"
+  },
+  "author": "Sergio Vazquez",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sergivv/PVPC_control/issues"
+  },
+  "homepage": "https://github.com/sergivv/PVPC_control#readme",
+  "dependencies": {
+    "mongoose": "6.3.2",
+    "node-fetch": "2.6.7"
+  },
+  "devDependencies": {
+    "standard": "17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
