@@ -8,8 +8,8 @@ const mongoose = require('mongoose')
 const Price = require('../models/DailyPrice')
 
 const date = new Date()
-console.log(date) // Delete this line when adjust the data download hour.
-// date.setDate(date.getDate() + 1)
+console.log(date)
+date.setDate(date.getDate() + 1)
 const year = date.getFullYear()
 const month = `${date.getMonth() + 1}`.padStart(2, '0')
 const day = `${date.getDate()}`.padStart(2, '0')
