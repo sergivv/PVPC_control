@@ -1,8 +1,11 @@
 // https://api.esios.ree.es/archives/70/download_json?locale=es&date=dd-mm-yyyy
 
+require('../db/mongo')
 const fetch = require('node-fetch')
 const fs = require('fs')
 const dataConvert = require('./data_convert')
+const mongoose = require('mongoose')
+const Price = require('../models/DailyPrice')
 
 const date = new Date()
 console.log(date) // Delete this line when adjust the data download hour.
@@ -28,6 +31,18 @@ fetch(url)
     const formattedJSON = await dataConvert(data, FileNameDate)
     const formattedJSOnFileName = `f${jsonFileName}`
     await fs.promises.writeFile(`./public/data/formatted/${formattedJSOnFileName}`, formattedJSON)
+
+    const dailyPrice = new Price(JSON.parse(formattedJSON))
+    dailyPrice.save()
+      .then(() => {
+        console.log('Data stored')
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .finally(() => {
+        mongoose.connection.close()
+      })
   })
   .catch(err => {
     console.log(`ERROR. ${url} does not exist.`)
