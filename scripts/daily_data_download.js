@@ -16,7 +16,7 @@ const day = `${date.getDate()}`.padStart(2, '0')
 const FileNameDate = `${year}${month}${day}`
 const URLdate = `${day}-${month}-${year}`
 
-const PREFIX_URL = 'https://api.esios.ree.es/archives/70/download_json?locale=es&date='
+const PREFIX_URL = 'https://api.esios.ree.es/archives/70/download_json'
 const url = `${PREFIX_URL}`
 
 const PREFIX_DATAFILE_NAME = 'data_'
