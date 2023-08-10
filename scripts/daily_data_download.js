@@ -17,7 +17,7 @@ const FileNameDate = `${year}${month}${day}`
 const URLdate = `${day}-${month}-${year}`
 
 const PREFIX_URL = 'https://api.esios.ree.es/archives/70/download_json?locale=es&date='
-const url = `${PREFIX_URL}${URLdate}`
+const url = `${PREFIX_URL}`
 
 const PREFIX_DATAFILE_NAME = 'data_'
 const DATAFILE_EXT = '.json'
